@@ -1,0 +1,16 @@
+.result {
+    max-width: 200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+}
+div{
+    width: 300px;
+    border: none;
+    border-radius: 8px;
+    background-color: #050516;
+    color: #ffffff;
+}
