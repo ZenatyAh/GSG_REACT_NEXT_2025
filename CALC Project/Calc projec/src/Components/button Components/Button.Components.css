@@ -1,0 +1,40 @@
+.Board_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 أعمدة متساوية */
+    gap: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .button {
+    margin: 20px;
+    width: 50%;
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: #050516;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+  }
+  
+  .button:hover {
+    background-color: #d6d6d6;
+  }
+  
+  .button:active {
+    transform: scale(0.95);
+    background-color: #ccc;
+  }
+  .bg-orange{
+    background-color: #da5406;
+  }
+  .bg-green {
+    background-color: green;
+  }
