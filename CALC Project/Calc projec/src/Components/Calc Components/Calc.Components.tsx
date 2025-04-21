@@ -7,6 +7,8 @@ const Calc = () => {
     if(val === '='){
       console.log(num +val+ eval(num))
       setNum(num +val+ eval(num));
+    }else if(val === 'C'){
+      setNum('');
     }
     else{
       setNum(num + val)
