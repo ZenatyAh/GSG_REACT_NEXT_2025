@@ -24,6 +24,7 @@ const Button = (props :Iprops) => {
       <input type='button' value={'='} className='button bg-green ' onClick={InputHandler}/>
       <input type='button' value={'*'} className='button bg-green ' onClick={InputHandler}/>
       <input type='button' value={'/'} className='button bg-green ' onClick={InputHandler}/>
+      <input type='button' value={'X'} className='button bg-green ' onClick={InputHandler}/>
     </div>
   )
 };

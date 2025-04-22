@@ -9,6 +9,9 @@ const Calc = () => {
       setNum(Evaluate(num));
     }else if(val === 'C'){
       setNum('');
+    }else if(val === 'X'){
+      const nex = num.slice(0,num.length-1)
+      setNum(nex)
     }
     else{
       setNum(num + val)
@@ -88,7 +91,7 @@ const finalOpe = (Tokens : string[]) => {
   }
   return result;
 }
-const Evaluate = (num) => {
+const Evaluate = (num:string) => {
   const tokens = ParseOperation(num);
   const afterMulDiv = MultiOp(tokens);
   const result = finalOpe(afterMulDiv);
