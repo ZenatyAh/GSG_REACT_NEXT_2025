@@ -6,7 +6,7 @@ const Calc = () => {
   const InputHandler = (val : string ) => {
     if(val === '='){
       // the new solution here
-      ParseOperation(num);
+      setNum(Evaluate(num));
     }else if(val === 'C'){
       setNum('');
     }
@@ -29,16 +29,68 @@ const Calc = () => {
 export default Calc;
 
 const ParseOperation = (val : string) => {
-  console.log(val);
+  let currentNumber = '';
+  const Tokens = [];
   for (let index = 0; index < val.length; index++) {
   // using regular expression
   if(/[0-9.]/.test(val[index])){
     // numbers
-    console.log('number')
-  }else if(/[+\-*/]/.test(val[index])){
+    currentNumber+=val[index];
+  }
+  else if(/[+\-*/]/.test(val[index])){
     // operation
-    console.log('operation')
+    if(currentNumber !== ''){
+      Tokens.push(currentNumber);
+      currentNumber = '';
+      Tokens.push(val[index]);
+    }
+    }
   }
+  Tokens.push(currentNumber);
+  return Tokens;
+}
 
+const MultiOp = (Tokens : string []) => {
+  const newTokens:string[] = [];
+  let i = 0;
+  while(i<Tokens.length){
+    const token = Tokens[i];
+    if(token === '*' || token === '/'){
+      const prev = Number(newTokens.pop());
+      const next = Number(Tokens[i+1]);
+      let result;
+      if(token === '*'){
+        result = prev * next;
+      }else{
+        result = prev / next;
+      }
+      console.log(prev, next , result)
+      newTokens.push(result.toString());
+      i+=2;
+    }else {
+      newTokens.push(token);
+      i++;
+    }
   }
+  return newTokens;
+}
+
+const finalOpe = (Tokens : string[]) => {
+  let result = Number(Tokens[0]);
+  for (let i = 1; i < Tokens.length; i+=2) {
+    const operator = Tokens[i];
+    const next = Number(Tokens[i+1]);
+    if(operator === '+'){
+      result += next;
+    }else{
+      result -= next;
+    }
+  }
+  return result;
+}
+const Evaluate = (num) => {
+  const tokens = ParseOperation(num);
+  const afterMulDiv = MultiOp(tokens);
+  const result = finalOpe(afterMulDiv);
+  return result;
 }

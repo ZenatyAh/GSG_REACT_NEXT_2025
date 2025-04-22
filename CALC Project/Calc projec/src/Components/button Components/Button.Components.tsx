@@ -1,6 +1,6 @@
 import './Button.Components.css'
 interface Iprops{
-  InputHandler:(x:string) => void;
+  InputHandler:(x:string) => string;
 }
 const Button = (props :Iprops) => {
   const InputHandler =(event : React.MouseEvent<HTMLInputElement, MouseEvent>) => {
