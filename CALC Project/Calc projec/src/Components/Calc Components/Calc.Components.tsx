@@ -3,18 +3,28 @@ import Button from '../button Components/Button.Components';
 import { useState } from 'react';
 const Calc = () => {
   const [num,setNum] = useState("");
+  const [isResult,setIsResult] = useState(false);
   const InputHandler = (val : string ) => {
     if(val === '='){
       // the new solution here
       setNum(Evaluate(num));
+      setIsResult(true);
     }else if(val === 'C'){
       setNum('');
+      setIsResult(false);
     }else if(val === '⌫'){
-      const nex = num.slice(0,num.length-1)
-      setNum(nex)
+      if(!isResult){
+        const nex = num.slice(0,num.length-1)
+        setNum(nex)
+      }
     }
     else{
-      setNum(num + val)
+      if(isResult){
+        setNum(val);
+        setIsResult(false)
+      }else{
+        setNum(num + val)
+      }
     }
   }
   // function for handling operation
@@ -95,5 +105,5 @@ const Evaluate = (num:string) => {
   const tokens = ParseOperation(num);
   const afterMulDiv = MultiOp(tokens);
   const result = EvaluateAddSubtract(afterMulDiv);
-  return result.toString;
+  return result.toString();
 }
